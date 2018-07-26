@@ -31,41 +31,49 @@ public class GameManager : MonoBehaviour {
 
     public List<_PassiveItem> PassiveItem = new List<_PassiveItem>();
 
-    public void _Change()
-    {
-        _PassiveItem temp = new _PassiveItem();
-        temp.ItemPower = PassiveItem[itemnum].ItemPower;
-        temp.CurrentCost = PassiveItem[itemnum].CurrentCost;
-        temp.IsHaveItem = true;
+    //public void _Change()
+    //{
+    //    _PassiveItem temp = new _PassiveItem();
+    //    temp.ItemPower = PassiveItem[itemnum].ItemPower;
+    //    temp.CurrentCost = PassiveItem[itemnum].CurrentCost;
+    //    temp.IsHaveItem = true;
 
-        PassiveItem[itemnum] = temp;
-        Debug.Log("패시브아이템 변환 완료");
-        Gold -= temp.CurrentCost;
-        Debug.Log("아이템 구매! 골드 차감 : -" + temp.CurrentCost.ToString());
+    //    PassiveItem[itemnum] = temp;
+    //    Debug.Log("패시브아이템 변환 완료");
+    //    Gold -= temp.CurrentCost;
+    //    Debug.Log("아이템 구매! 골드 차감 : -" + temp.CurrentCost.ToString());
 
-        Debug.Log("이전 아이템 파워 : " + MulGold);
-        MulGold += temp.ItemPower;
-        Debug.Log("아이템 효과 적용 완료 현제 아이템 파워: " + MulGold);
+    //    Debug.Log("이전 아이템 파워 : " + MulGold);
+    //    MulGold += temp.ItemPower;
+    //    Debug.Log("아이템 효과 적용 완료 현제 아이템 파워: " + MulGold);
 
-        itemnum += 1;
-        Debug.Log("아이템 레벨 증가! 현 레벨: " + itemnum);
-    }
+    //    itemnum += 1;
+    //    Debug.Log("아이템 레벨 증가! 현 레벨: " + itemnum);
+    //}
     public void _WeaponBuy(int WeaponNum)
     {
-        _PassiveItem temp = new _PassiveItem();
-        temp.ItemPower = PassiveItem[WeaponNum].ItemPower;
-        temp.CurrentCost = PassiveItem[WeaponNum].CurrentCost;
-        temp.IsHaveItem = true;
+        if (!PassiveItem[WeaponNum].IsHaveItem)
+        {
+            _PassiveItem temp = new _PassiveItem();
+            temp.ItemPower = PassiveItem[WeaponNum].ItemPower;
+            temp.CurrentCost = PassiveItem[WeaponNum].CurrentCost;
+            temp.IsHaveItem = true;
 
-        PassiveItem[WeaponNum] = temp;
+            PassiveItem[WeaponNum] = temp;
 
-        Gold -= temp.CurrentCost;
-        MulGold += temp.ItemPower;
+            Gold -= temp.CurrentCost;
+            MulGold += temp.ItemPower;
+
+            Player_itemlevel += 1;
+            Debug.Log(WeaponNum+"Level 무기 구매 성공");
+        }
+        else
+            Debug.Log("이미 구입한 무기입니다");
     }
     private void Awake()
     {
         MulGold = 1;
-        itemnum = 0;
+      
         Player_No = 999;
     }
     public void _Attack()
