@@ -4529,11 +4529,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gold: 0
   MulGold: 0
+  GoldPerSec: 0
   i: 0
   Player_No: 0
   Player_itemlevel: 0
   Player_friendlevel: 0
-  item: 000000
+  onesec: 0
   PassiveItem:
   - ItemPower: 10
     CurrentCost: 10
@@ -4549,6 +4550,32 @@ MonoBehaviour:
     IsHaveItem: 0
   - ItemPower: 50
     CurrentCost: 50
+    IsHaveItem: 0
+  FriendItem:
+  - ItemPower: 100
+    CurrentCost: 10000
+    CostPerLevel: 0
+    UpgradeLevel: 0
+    IsHaveItem: 0
+  - ItemPower: 0
+    CurrentCost: 0
+    CostPerLevel: 0
+    UpgradeLevel: 0
+    IsHaveItem: 0
+  - ItemPower: 0
+    CurrentCost: 0
+    CostPerLevel: 0
+    UpgradeLevel: 0
+    IsHaveItem: 0
+  - ItemPower: 0
+    CurrentCost: 0
+    CostPerLevel: 0
+    UpgradeLevel: 0
+    IsHaveItem: 0
+  - ItemPower: 0
+    CurrentCost: 0
+    CostPerLevel: 0
+    UpgradeLevel: 0
     IsHaveItem: 0
 --- !u!4 &1470656499
 Transform:
