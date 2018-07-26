@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemBuyScripts : MonoBehaviour {
-    public long CurrentCost;
+   
     
     private void Awake()
-    {if(gameObject.name=="Attack")
+    {
         GetComponent<Button>().onClick.AddListener(() =>
         {
             if (GameManager.Instance.Gold < GameManager.Instance.PassiveItem[0].CurrentCost)

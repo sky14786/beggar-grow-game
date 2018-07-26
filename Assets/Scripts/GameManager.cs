@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
         temp.CurrentCost = PassiveItem[itemnum].CurrentCost;
         temp.IsHaveItem = true;
 
-        PassiveItem[0] = temp;
+        PassiveItem[itemnum] = temp;
         Debug.Log("패시브아이템 변환 완료");
         Gold -= temp.CurrentCost;
         Debug.Log("아이템 구매! 골드 차감 : -" + temp.CurrentCost.ToString());
@@ -49,8 +49,18 @@ public class GameManager : MonoBehaviour {
 
         itemnum += 1;
         Debug.Log("아이템 레벨 증가! 현 레벨: " + itemnum);
-        
+    }
+    public void _WeaponBuy(int WeaponNum)
+    {
+        _PassiveItem temp = new _PassiveItem();
+        temp.ItemPower = PassiveItem[WeaponNum].ItemPower;
+        temp.CurrentCost = PassiveItem[WeaponNum].CurrentCost;
+        temp.IsHaveItem = true;
 
+        PassiveItem[WeaponNum] = temp;
+
+        Gold -= temp.CurrentCost;
+        MulGold += temp.ItemPower;
     }
     private void Awake()
     {
