@@ -61,6 +61,8 @@ public class LoginScripts : MonoBehaviour
 
                 Debug.Log("플레이어 정보 로드 완료");
                 Login_Panel.active = false;
+                
+                gameObject.active = false;
                 //Debug.Log(GameManager.Instance.Player_friendlevel);
                 //Debug.Log(GameManager.Instance.Player_itemlevel);
                 //Debug.Log(GameManager.Instance.Player_No);

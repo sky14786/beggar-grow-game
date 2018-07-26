@@ -11,8 +11,8 @@ public class SaveData : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("데이터 저장 URL 설정 완료!");
         url = "sky14786.cafe24.com/Save_Data.php";
-
         GetComponent<Button>().onClick.AddListener(() => _SaveData());
     }
 

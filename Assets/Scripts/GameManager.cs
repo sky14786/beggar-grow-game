@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
         {
             if (instance == null)
             {
-                //instance =
                 instance = (GameManager)FindObjectOfType<GameManager>();
             }
             return instance;
@@ -57,11 +56,11 @@ public class GameManager : MonoBehaviour {
     {
         MulGold = 1;
         itemnum = 0;
+        Player_No = 999;
     }
     public void _Attack()
     {
         Gold = Gold + 1 * MulGold;
-         
     }
 
     public void Player_Check()
@@ -70,7 +69,6 @@ public class GameManager : MonoBehaviour {
         _PassiveItem temp = new _PassiveItem();
         for(i=0;i<Player_itemlevel;i++)
         {
-            
             temp.CurrentCost = PassiveItem[i].CurrentCost;
             temp.ItemPower = PassiveItem[i].ItemPower;
             MulGold +=temp.ItemPower;

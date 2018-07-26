@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ButtonController : MonoBehaviour
 {
     public GameObject LoginPanel, Create_Player_Panel;
-    public GameObject G;
+    public GameObject G,Game_Start,Game_Panel;
     private void Awake()
     {
         for (int i = 0; i < transform.GetChildCount(); i++)
@@ -29,6 +29,23 @@ public class ButtonController : MonoBehaviour
                     LoginPanel.active = false;
                 });
             }
+        }
+
+        Game_Start.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Game_Panel.active = true;
+            this.gameObject.active = false;
+        });
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.Player_No == 999)
+        {
+        }
+        else
+        {
+            Game_Start.active = true;
         }
     }
 }
