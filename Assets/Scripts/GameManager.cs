@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public double Gold, MulGold;
+    public double Gold, MulGold,GoldPerSec;
     public int i,Player_No,Player_itemlevel,Player_friendlevel;
-    public List<bool> item = new List<bool>();
+    public float onesec;
 
+    // -----------------------------
     [Serializable]
     public struct _PassiveItem
     {
@@ -28,28 +29,24 @@ public class GameManager : MonoBehaviour {
         public double CurrentCost;
         public bool IsHaveItem;
     }
-
+    [Serializable]
+    public struct _FriendItem
+    {
+        public double ItemPower;
+        public double CurrentCost,CostPerLevel;
+        public int UpgradeLevel;
+        public bool IsHaveItem;
+    }
+    //---------------------------------
     public List<_PassiveItem> PassiveItem = new List<_PassiveItem>();
+    public List<_FriendItem> FriendItem = new List<_FriendItem>();
+ 
+    public void _FriendBuy(int FriendNum)
+    {
+        
+    }
 
-    //public void _Change()
-    //{
-    //    _PassiveItem temp = new _PassiveItem();
-    //    temp.ItemPower = PassiveItem[itemnum].ItemPower;
-    //    temp.CurrentCost = PassiveItem[itemnum].CurrentCost;
-    //    temp.IsHaveItem = true;
 
-    //    PassiveItem[itemnum] = temp;
-    //    Debug.Log("패시브아이템 변환 완료");
-    //    Gold -= temp.CurrentCost;
-    //    Debug.Log("아이템 구매! 골드 차감 : -" + temp.CurrentCost.ToString());
-
-    //    Debug.Log("이전 아이템 파워 : " + MulGold);
-    //    MulGold += temp.ItemPower;
-    //    Debug.Log("아이템 효과 적용 완료 현제 아이템 파워: " + MulGold);
-
-    //    itemnum += 1;
-    //    Debug.Log("아이템 레벨 증가! 현 레벨: " + itemnum);
-    //}
     public void _WeaponBuy(int WeaponNum)
     {
         if (WeaponNum == Player_itemlevel && Gold >= PassiveItem[WeaponNum].CurrentCost)
@@ -88,6 +85,8 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log("플레이어 체크 시작");
         _PassiveItem temp = new _PassiveItem();
+        _FriendItem temp2 = new _FriendItem();
+        Debug.Log("아이템 레벨 체크시작");
         for(i=0;i<Player_itemlevel;i++)
         {
             temp.CurrentCost = PassiveItem[i].CurrentCost;
@@ -97,7 +96,44 @@ public class GameManager : MonoBehaviour {
 
             PassiveItem[i] = temp;
         }
+        Debug.Log("아이템 레벨 체크 종료");
+        Debug.Log("친구 레벨 체크 시작");
+        for(i=0;i<Player_friendlevel;i++)
+        {
+            temp2.CostPerLevel = FriendItem[i].CostPerLevel;
+            temp2.CurrentCost = FriendItem[i].CurrentCost;
+            temp2.ItemPower = FriendItem[i].ItemPower;
+            temp2.UpgradeLevel = FriendItem[i].UpgradeLevel;
+            temp2.IsHaveItem = true;
+
+
+            temp2.ItemPower *= FriendItem[i].UpgradeLevel * 0.2;
+            temp2.CurrentCost += FriendItem[i].UpgradeLevel * FriendItem[i].CostPerLevel;
+            GoldPerSec += temp2.ItemPower;
+            
+
+            FriendItem[i] = temp2;
+        }
+        Debug.Log("친구 레벨 체크 종료");
         Debug.Log("플레이어 체크 종료");
+    }
+
+    public void _GoldPer()
+    {
+       if(onesec>=1f)
+        {
+            onesec -= Time.deltaTime;
+        }
+       else
+        {
+            Gold += GoldPerSec;
+            onesec = 1f;
+        }
+    }
+
+    private void Update()
+    {
+        _GoldPer();
     }
 }
 
