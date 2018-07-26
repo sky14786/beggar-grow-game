@@ -43,6 +43,26 @@ public class GameManager : MonoBehaviour {
  
     public void _FriendBuy(int FriendNum)
     {
+        _FriendItem temp = new _FriendItem();
+        temp.CostPerLevel = FriendItem[FriendNum].CostPerLevel;
+        temp.IsHaveItem = FriendItem[FriendNum].IsHaveItem;
+        temp.UpgradeLevel = FriendItem[FriendNum].UpgradeLevel;
+        temp.CurrentCost = FriendItem[FriendNum].CurrentCost;
+        temp.ItemPower = FriendItem[FriendNum].ItemPower;
+
+        if (FriendItem[FriendNum].IsHaveItem && Gold >=FriendItem[FriendNum].CurrentCost && FriendItem[FriendNum].UpgradeLevel <20) // <<<< 여기부터
+        {
+            temp.UpgradeLevel += 1;
+            temp.CurrentCost += temp.UpgradeLevel * temp.CostPerLevel;
+            temp.ItemPower *= temp.UpgradeLevel * 0.2;
+            Gold -= temp.CurrentCost;
+
+
+
+
+        }
+        
+
         
     }
 
