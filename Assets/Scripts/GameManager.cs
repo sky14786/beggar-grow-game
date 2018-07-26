@@ -52,23 +52,26 @@ public class GameManager : MonoBehaviour {
     //}
     public void _WeaponBuy(int WeaponNum)
     {
-        if (!PassiveItem[WeaponNum].IsHaveItem)
+        if (WeaponNum == Player_itemlevel && Gold >= PassiveItem[WeaponNum].CurrentCost)
         {
-            _PassiveItem temp = new _PassiveItem();
-            temp.ItemPower = PassiveItem[WeaponNum].ItemPower;
-            temp.CurrentCost = PassiveItem[WeaponNum].CurrentCost;
-            temp.IsHaveItem = true;
+            if (!PassiveItem[WeaponNum].IsHaveItem)
+            {
+                _PassiveItem temp = new _PassiveItem();
+                temp.ItemPower = PassiveItem[WeaponNum].ItemPower;
+                temp.CurrentCost = PassiveItem[WeaponNum].CurrentCost;
+                temp.IsHaveItem = true;
 
-            PassiveItem[WeaponNum] = temp;
+                PassiveItem[WeaponNum] = temp;
 
-            Gold -= temp.CurrentCost;
-            MulGold += temp.ItemPower;
+                Gold -= temp.CurrentCost;
+                MulGold += temp.ItemPower;
 
-            Player_itemlevel += 1;
-            Debug.Log(WeaponNum+"Level 무기 구매 성공");
+                Player_itemlevel += 1;
+                Debug.Log(WeaponNum + "Level 무기 구매 성공");
+            }
         }
         else
-            Debug.Log("이미 구입한 무기입니다");
+        Debug.Log("Weapon Level , Gold , IsHaveItem error");
     }
     private void Awake()
     {
