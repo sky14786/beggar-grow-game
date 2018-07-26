@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public double Gold, MulGold;
-    public int i,itemnum,Player_No,Player_itemlevel,Player_friendlevel;
+    public int i,Player_No,Player_itemlevel,Player_friendlevel;
     public List<bool> item = new List<bool>();
 
     [Serializable]

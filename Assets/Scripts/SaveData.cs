@@ -13,17 +13,11 @@ public class SaveData : MonoBehaviour
     {
         Debug.Log("데이터 저장 URL 설정 완료!");
         url = "sky14786.cafe24.com/Save_Data.php";
-        GetComponent<Button>().onClick.AddListener(() => _SaveData());
+        GetComponent<Button>().onClick.AddListener(() => StartCoroutine(__SaveData()));
     }
 
  
-    public void _SaveData()
-    {
-
-        
-        StartCoroutine(__SaveData());
-       
-    }
+   
     IEnumerator __SaveData()
     {
         Debug.Log("데이터 저장 시작");
