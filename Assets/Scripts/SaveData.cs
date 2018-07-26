@@ -20,18 +20,19 @@ public class SaveData : MonoBehaviour
     public void _SaveData()
     {
 
-        Debug.Log("데이터 저장");
+        
         StartCoroutine(__SaveData());
        
     }
     IEnumerator __SaveData()
     {
-        
+        Debug.Log("데이터 저장 시작");
         WWWForm form = new WWWForm();
-        
 
+        form.AddField("no", GameManager.Instance.Player_No);
         form.AddField("gold", GameManager.Instance.Gold.ToString());
-        form.AddField("itemlevel", GameManager.Instance.itemnum);
+        form.AddField("itemlevel", GameManager.Instance.Player_itemlevel);
+        form.AddField("friendlevel", GameManager.Instance.Player_friendlevel);
 
 
         WWW webRequest = new WWW(url, form);

@@ -19,8 +19,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public double Gold, MulGold;
-    //public bool[] item = { false, false, false };
-    public int i,itemnum;
+    public int i,itemnum,Player_No,Player_itemlevel,Player_friendlevel;
     public List<bool> item = new List<bool>();
 
     [Serializable]
@@ -54,27 +53,32 @@ public class GameManager : MonoBehaviour {
         
 
     }
-    
-
-
     private void Awake()
     {
         MulGold = 1;
         itemnum = 0;
     }
-    
-
-    //public void _MulGold(long plus,int itemnum)
-    //{
-     
-    //        if (item[itemnum])
-    //            MulGold += plus;
-    //}
-
     public void _Attack()
     {
         Gold = Gold + 1 * MulGold;
          
+    }
+
+    public void Player_Check()
+    {
+        Debug.Log("플레이어 체크 시작");
+        _PassiveItem temp = new _PassiveItem();
+        for(i=0;i<Player_itemlevel;i++)
+        {
+            
+            temp.CurrentCost = PassiveItem[i].CurrentCost;
+            temp.ItemPower = PassiveItem[i].ItemPower;
+            MulGold +=temp.ItemPower;
+            temp.IsHaveItem = true;
+
+            PassiveItem[i] = temp;
+        }
+        Debug.Log("플레이어 체크 종료");
     }
 }
 
