@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SaveData : MonoBehaviour
 {
-    public string url;
+    public string url,temp;
   
 
 
@@ -27,6 +27,13 @@ public class SaveData : MonoBehaviour
         form.AddField("gold", GameManager.Instance.Gold.ToString());
         form.AddField("itemlevel", GameManager.Instance.Player_itemlevel);
         form.AddField("friendlevel", GameManager.Instance.Player_friendlevel);
+        
+        for(int i=0;i<GameManager.Instance.Player_friendlevel;i++)
+        {
+            temp += GameManager.Instance.FriendItem[i].UpgradeLevel.ToString()+"/";
+        }
+
+        form.AddField("upgradelevel", temp);
 
 
         WWW webRequest = new WWW(url, form);

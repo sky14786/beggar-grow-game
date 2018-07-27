@@ -50,20 +50,30 @@ public class GameManager : MonoBehaviour {
         temp.CurrentCost = FriendItem[FriendNum].CurrentCost;
         temp.ItemPower = FriendItem[FriendNum].ItemPower;
 
-        if (FriendItem[FriendNum].IsHaveItem && Gold >=FriendItem[FriendNum].CurrentCost && FriendItem[FriendNum].UpgradeLevel <20) // <<<< 여기부터
+        if (FriendItem[FriendNum].IsHaveItem && Gold >= FriendItem[FriendNum].CurrentCost)
         {
-            temp.UpgradeLevel += 1;
-            temp.CurrentCost += temp.UpgradeLevel * temp.CostPerLevel;
-            temp.ItemPower *= temp.UpgradeLevel * 0.2;
-            Gold -= temp.CurrentCost;
-
-
-
-
+            if (FriendItem[FriendNum].UpgradeLevel < 20)// <<<< 여기부터
+            {
+                temp.UpgradeLevel += 1;
+                temp.CurrentCost += temp.UpgradeLevel * temp.CostPerLevel;
+                temp.ItemPower += (temp.UpgradeLevel * 0.2);
+                Gold -= temp.CurrentCost;
+                GoldPerSec += temp.ItemPower;
+                FriendItem[FriendNum] = temp;
+            }
+            else
+                Debug.Log("최대 업그레이드 수치입니다");
         }
-        
-
-        
+        else if (!FriendItem[FriendNum].IsHaveItem && Gold >= FriendItem[FriendNum].CurrentCost)
+        {
+            temp.IsHaveItem = true;
+            Player_friendlevel += 1;
+            Gold -= temp.CurrentCost;
+            GoldPerSec += temp.ItemPower;
+            FriendItem[FriendNum] = temp;
+        }
+        else
+            Debug.Log("골드가 부족합니다");
     }
 
 
@@ -140,15 +150,18 @@ public class GameManager : MonoBehaviour {
 
     public void _GoldPer()
     {
-       if(onesec>=1f)
-        {
-            onesec -= Time.deltaTime;
-        }
-       else
+       if(onesec<=0f)
         {
             Gold += GoldPerSec;
             onesec = 1f;
+            Debug.Log("돈증가");
         }
+       else
+        {
+           
+            onesec -= Time.deltaTime;
+        }
+       
     }
 
     private void Update()
