@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public double Gold, MulGold, GoldPerSec;
     public int i, Player_No, Player_itemlevel, Player_friendlevel;
     public int[] Upgrade_Level;
-    public float onesec;
+    public float onesec,Auto_Save_Time;
 
     // -----------------------------
     [Serializable]
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
                 temp.CurrentCost = (temp.UpgradeLevel * temp.CostPerLevel);
                 GoldPerSec = temp.ItemPower+(temp.ItemPower * temp.UpgradeLevel) * 0.2;
                 FriendItem[FriendNum] = temp;
+                //StartCoroutine(SaveData.Instance.__SaveData());
             }
             else
                 Debug.Log("최대 업그레이드 수치입니다");
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
             temp.CurrentCost = temp.CostPerLevel;
             GoldPerSec += temp.ItemPower;
             FriendItem[FriendNum] = temp;
+            //StartCoroutine(SaveData.Instance.__SaveData());
         }
         else
             Debug.Log("골드가 부족합니다");
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
 
                 Player_itemlevel += 1;
                 Debug.Log(WeaponNum + "Level 무기 구매 성공");
+                //StartCoroutine(SaveData.Instance.__SaveData());
             }
         }
         else
@@ -107,6 +110,7 @@ public class GameManager : MonoBehaviour
         MulGold = 1;
         Upgrade_Level = new int[4];
         Player_No = 999;
+        Auto_Save_Time = 15f;
     }
     public void _Attack()
     {
@@ -165,10 +169,25 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public void _AutoSave()
+    {
+        if (Auto_Save_Time <= 0)
+        {
+            StartCoroutine(SaveData.Instance.__SaveData());
+            Auto_Save_Time = 15f;
+        }
+        else
+            Auto_Save_Time -= Time.deltaTime;
+      
+    }
+        
+        
+    
 
     private void Update()
     {
         _GoldPer();
+     
     }
 }
 

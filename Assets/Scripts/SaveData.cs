@@ -5,6 +5,18 @@ using UnityEngine.UI;
 
 public class SaveData : MonoBehaviour
 {
+    private static SaveData instance;
+    public static SaveData Instance
+    {
+        get
+        {
+            if(instance==null)
+            {
+                instance = new SaveData();
+            }
+            return instance;
+        }
+    }
     public string url,temp;
   
 
@@ -18,7 +30,7 @@ public class SaveData : MonoBehaviour
 
  
    
-    IEnumerator __SaveData()
+   public IEnumerator __SaveData()
     {
         Debug.Log("데이터 저장 시작");
         WWWForm form = new WWWForm();
