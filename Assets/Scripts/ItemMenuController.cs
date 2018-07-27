@@ -14,18 +14,17 @@ public class ItemMenuController : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() => _Open());
     }
 
-
-
     public void _Open()
     {
+
+
         if (isOpen)
         {
             while (true)
             {
-                if (ItemPanel.transform.position.x >= 1600)
+                if (ItemPanel.transform.position.x >754)
                 {
-
-                    ItemPanel.transform.Translate(-20, 0, 0);
+                    ItemPanel.transform.Translate(-1, 0, 0);
                 }
                 else
                 {
@@ -38,9 +37,9 @@ public class ItemMenuController : MonoBehaviour
         {
             while (true)
             {
-                if (ItemPanel.transform.position.x <= 2390)
+                if (ItemPanel.transform.position.x < 1409)
                 {
-                    ItemPanel.transform.Translate(20, 0, 0);
+                    ItemPanel.transform.Translate(1, 0, 0);
                 }
                 else
                 {
