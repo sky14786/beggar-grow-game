@@ -4582,6 +4582,7 @@ MonoBehaviour:
   Player_No: 0
   Player_itemlevel: 0
   Player_friendlevel: 0
+  Upgrade_Level: 
   onesec: 0
   PassiveItem:
   - ItemPower: 10
@@ -4601,28 +4602,28 @@ MonoBehaviour:
     IsHaveItem: 0
   FriendItem:
   - ItemPower: 100
-    CurrentCost: 1000
-    CostPerLevel: 200
+    CurrentCost: 10000
+    CostPerLevel: 1000
     UpgradeLevel: 0
     IsHaveItem: 0
-  - ItemPower: 0
-    CurrentCost: 0
-    CostPerLevel: 0
+  - ItemPower: 500
+    CurrentCost: 50000
+    CostPerLevel: 5000
     UpgradeLevel: 0
     IsHaveItem: 0
-  - ItemPower: 0
-    CurrentCost: 0
-    CostPerLevel: 0
+  - ItemPower: 1000
+    CurrentCost: 100000
+    CostPerLevel: 10000
     UpgradeLevel: 0
     IsHaveItem: 0
-  - ItemPower: 0
-    CurrentCost: 0
-    CostPerLevel: 0
+  - ItemPower: 10000
+    CurrentCost: 500000
+    CostPerLevel: 200000
     UpgradeLevel: 0
     IsHaveItem: 0
-  - ItemPower: 0
-    CurrentCost: 0
-    CostPerLevel: 0
+  - ItemPower: 50000
+    CurrentCost: 1000000
+    CostPerLevel: 1000000
     UpgradeLevel: 0
     IsHaveItem: 0
 --- !u!4 &1470656499
