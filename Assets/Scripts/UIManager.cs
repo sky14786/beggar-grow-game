@@ -20,11 +20,15 @@ public class UIManager : MonoBehaviour {
     public Text GoldDisplay;
     public InputField Gamble_Money;
     public GameObject Gamble_Panel;
+    public string Goldtext;
   
+
 
     private void Update()
     {
-        GoldDisplay.text = "Gold : " + GameManager.Instance.Gold.ToString();
+        
+        GoldDisplay.text = "Gold : " + string.Format("{0:#,###}", GameManager.Instance.Gold);
     }
+    
 
 }
