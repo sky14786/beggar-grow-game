@@ -9,6 +9,7 @@ public class LoginScripts : MonoBehaviour
     public string url;
     public InputField id, pw;
     public GameObject Login_Panel;
+    
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class LoginScripts : MonoBehaviour
 
     IEnumerator _Login()
     {
+        string[] temp_upgrade_level;
         Debug.Log("로그인 시도");
 
         WWWForm form = new WWWForm();
@@ -55,6 +57,12 @@ public class LoginScripts : MonoBehaviour
                 int.TryParse(n[0]["itemlevel"].ToString(), out GameManager.Instance.Player_itemlevel);
                 int.TryParse(n[0]["friendlevel"].ToString(), out GameManager.Instance.Player_friendlevel);
                 double.TryParse(n[0]["gold"].ToString(), out GameManager.Instance.Gold);
+                temp_upgrade_level = n[0]["upgradelevel"].ToString().Split('#');
+                for(int i = 0; i<temp_upgrade_level.Length;i++)
+                {
+                    int.TryParse(temp_upgrade_level[i], out GameManager.Instance.Upgrade_Level[i]);
+                }
+
 
                 GameManager.Instance.Player_Check();
 
