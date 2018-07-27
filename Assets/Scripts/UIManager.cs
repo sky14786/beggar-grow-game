@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour {
     }
 
     public Text GoldDisplay;
+    public InputField Gamble_Money;
+    public GameObject Gamble_Panel;
   
 
     private void Update()

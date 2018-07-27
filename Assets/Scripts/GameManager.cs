@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
@@ -18,16 +20,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public double Gold, MulGold, GoldPerSec;
+    public double Gold, MulGold, GoldPerSec, Gamble_Money;
     public int i, Player_No, Player_itemlevel, Player_friendlevel;
     public int[] Upgrade_Level;
-    public float onesec,Auto_Save_Time;
+    public float onesec, Auto_Save_Time;
+    public System.Random Gambel = new System.Random();
 
     // -----------------------------
     [Serializable]
     public struct _PassiveItem
     {
-        public double ItemPower;    
+        public double ItemPower;
         public double CurrentCost;
         public bool IsHaveItem;
     }
@@ -59,7 +62,7 @@ public class GameManager : MonoBehaviour
                 Gold -= temp.CurrentCost;
                 temp.UpgradeLevel += 1;
                 temp.CurrentCost = (temp.UpgradeLevel * temp.CostPerLevel);
-                GoldPerSec = temp.ItemPower+(temp.ItemPower * temp.UpgradeLevel) * 0.2;
+                GoldPerSec = temp.ItemPower + (temp.ItemPower * temp.UpgradeLevel) * 0.2;
                 FriendItem[FriendNum] = temp;
                 //StartCoroutine(SaveData.Instance.__SaveData());
             }
@@ -119,7 +122,7 @@ public class GameManager : MonoBehaviour
 
     public void Player_Check()
     {
-       
+
         Debug.Log("플레이어 체크 시작");
         _PassiveItem temp = new _PassiveItem();
         _FriendItem temp2 = new _FriendItem();
@@ -144,7 +147,7 @@ public class GameManager : MonoBehaviour
             temp2.IsHaveItem = true;
 
 
-         
+
             temp2.CurrentCost = (temp2.UpgradeLevel * temp2.CostPerLevel);
             GoldPerSec += temp2.ItemPower + ((temp2.ItemPower * temp2.UpgradeLevel) * 0.2);
 
@@ -178,16 +181,82 @@ public class GameManager : MonoBehaviour
         }
         else
             Auto_Save_Time -= Time.deltaTime;
-      
-    }
-        
-        
-    
 
+    }
     private void Update()
     {
         _GoldPer();
-     
+
+    }
+    public void _Gamble(int GambleNum)
+    {
+        switch (GambleNum)
+        {
+            case 1:
+                {
+                    Double.TryParse(UIManager.Instance.Gamble_Money.text, out Gamble_Money);
+                    Gold -= Gamble_Money;
+                    if (Gambel.Next(0, 100) <= 40)
+                    {
+                        Gold += (Gamble_Money * 2.25);
+                    }
+                    UIManager.Instance.Gamble_Money.text = "";
+                    Gamble_Money = 0;
+                    break;
+                }
+            case 2:
+                {
+                    Double.TryParse(UIManager.Instance.Gamble_Money.text, out Gamble_Money);
+                    Gold -= Gamble_Money;
+                    if (Gambel.Next(0, 100) <= 30)
+                    {
+                        Gold += (Gamble_Money * 2.5);
+                    }
+                    UIManager.Instance.Gamble_Money.text = "";
+                    Gamble_Money = 0;
+                    break;
+                }
+            case 3:
+                {
+                    Double.TryParse(UIManager.Instance.Gamble_Money.text, out Gamble_Money);
+                    Gold -= Gamble_Money;
+                    if (Gambel.Next(0, 100) <= 20)
+                    {
+                        Gold += (Gamble_Money * 2.85);
+                    }
+                    UIManager.Instance.Gamble_Money.text = "";
+                    Gamble_Money = 0;
+                    break;
+                }
+
+            case 4:
+                {
+                    Double.TryParse(UIManager.Instance.Gamble_Money.text, out Gamble_Money);
+                    Gold -= Gamble_Money;
+                    if (Gambel.Next(0, 100) <= 10)
+                    {
+                        Gold += (Gamble_Money * 3);
+                    }
+                    UIManager.Instance.Gamble_Money.text = "";
+                    Gamble_Money = 0;
+                    break;
+                }
+
+            case 5:
+                {
+                    Double.TryParse(UIManager.Instance.Gamble_Money.text, out Gamble_Money);
+                    Gold -= Gamble_Money;
+                    if (Gambel.Next(0, 100) <= 5)
+                    {
+                        Gold += (Gamble_Money * 4);
+                    }
+                    UIManager.Instance.Gamble_Money.text = "";
+                    Gamble_Money = 0;
+                    break;
+                }
+        }
+
     }
 }
+
 
