@@ -7,6 +7,8 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+
+    //싱글톤 패턴 적용
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -19,12 +21,13 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
+    //변수선언
     public double Gold, MulGold, GoldPerSec, Gamble_Money;
     public int i, Player_No, Player_itemlevel, Player_friendlevel;
     public int[] Upgrade_Level;
     public float onesec, Auto_Save_Time;
     public System.Random Gambel = new System.Random();
+    
 
     // -----------------------------
     [Serializable]
@@ -34,7 +37,7 @@ public class GameManager : MonoBehaviour
         public double CurrentCost;
         public bool IsHaveItem;
     }
-    [Serializable]
+    [Serializable] //<< 
     public struct _FriendItem
     {
         public double ItemPower;
@@ -43,9 +46,13 @@ public class GameManager : MonoBehaviour
         public bool IsHaveItem;
     }
     //---------------------------------
+
+
     public List<_PassiveItem> PassiveItem = new List<_PassiveItem>();
     public List<_FriendItem> FriendItem = new List<_FriendItem>();
 
+
+    // 친구 구매
     public void _FriendBuy(int FriendNum)
     {
         _FriendItem temp = new _FriendItem();
@@ -83,7 +90,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("골드가 부족합니다");
     }
 
-
+    // 무기 구매 
     public void _WeaponBuy(int WeaponNum)
     {
         if (WeaponNum == Player_itemlevel && Gold >= PassiveItem[WeaponNum].CurrentCost)
@@ -108,6 +115,7 @@ public class GameManager : MonoBehaviour
         else
             Debug.Log("Weapon Level , Gold , IsHaveItem error");
     }
+
     public void Awake()
     {
         MulGold = 1;
@@ -115,11 +123,14 @@ public class GameManager : MonoBehaviour
         Player_No = 999;
         Auto_Save_Time = 15f;
     }
+    // 버튼 클릭시 돈증가 시스템
     public void _Attack()
     {
         Gold = Gold + 1 * MulGold;
     }
 
+
+    // 로그인 시 불러온 값을 게임매니저에 적용
     public void Player_Check()
     {
 
@@ -158,6 +169,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("플레이어 체크 종료");
     }
 
+
+    // 1초마다 골드 증가
     public void _GoldPer()
     {
         if (onesec <= 0f)
@@ -172,6 +185,8 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    // 자동 저장 시스템
     public void _AutoSave()
     {
         if (Auto_Save_Time <= 0)
@@ -188,6 +203,8 @@ public class GameManager : MonoBehaviour
         _GoldPer();
 
     }
+
+    // 도박 시스템
     public void _Gamble(int GambleNum)
     {
         switch (GambleNum)
