@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
                 temp.CurrentCost = (temp.UpgradeLevel * temp.CostPerLevel);
                 GoldPerSec = temp.ItemPower + (temp.ItemPower * temp.UpgradeLevel) * 0.2;
                 FriendItem[FriendNum] = temp;
+                StartCoroutine(SaveData.Instance.__SaveData());
                 //StartCoroutine(SaveData.Instance.__SaveData());
             }
             else
@@ -84,6 +85,7 @@ public class GameManager : MonoBehaviour
             temp.CurrentCost = temp.CostPerLevel;
             GoldPerSec += temp.ItemPower;
             FriendItem[FriendNum] = temp;
+            StartCoroutine(SaveData.Instance.__SaveData());
             //StartCoroutine(SaveData.Instance.__SaveData());
         }
         else
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
 
                 Player_itemlevel += 1;
                 Debug.Log(WeaponNum + "Level 무기 구매 성공");
+                StartCoroutine(SaveData.Instance.__SaveData());
                 //StartCoroutine(SaveData.Instance.__SaveData());
             }
         }
@@ -201,7 +204,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _GoldPer();
-
+        _AutoSave();
     }
 
     // 도박 시스템
@@ -219,6 +222,7 @@ public class GameManager : MonoBehaviour
                     }
                     UIManager.Instance.Gamble_Money.text = "";
                     Gamble_Money = 0;
+                    StartCoroutine(SaveData.Instance.__SaveData());
                     break;
                 }
             case 2:
@@ -231,6 +235,7 @@ public class GameManager : MonoBehaviour
                     }
                     UIManager.Instance.Gamble_Money.text = "";
                     Gamble_Money = 0;
+                    StartCoroutine(SaveData.Instance.__SaveData());
                     break;
                 }
             case 3:
@@ -243,6 +248,7 @@ public class GameManager : MonoBehaviour
                     }
                     UIManager.Instance.Gamble_Money.text = "";
                     Gamble_Money = 0;
+                    StartCoroutine(SaveData.Instance.__SaveData());
                     break;
                 }
 
@@ -256,6 +262,7 @@ public class GameManager : MonoBehaviour
                     }
                     UIManager.Instance.Gamble_Money.text = "";
                     Gamble_Money = 0;
+                    StartCoroutine(SaveData.Instance.__SaveData());
                     break;
                 }
 
@@ -269,6 +276,7 @@ public class GameManager : MonoBehaviour
                     }
                     UIManager.Instance.Gamble_Money.text = "";
                     Gamble_Money = 0;
+                    StartCoroutine(SaveData.Instance.__SaveData());
                     break;
                 }
         }
