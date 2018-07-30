@@ -211,6 +211,8 @@ public class GameManager : MonoBehaviour
             Auto_Save_Time -= Time.deltaTime;
 
     }
+
+    //매 프레임 마다 아래 함수 호출
     private void Update()
     {
         _GoldPer();

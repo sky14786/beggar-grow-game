@@ -21,6 +21,7 @@ public class SaveData : MonoBehaviour
   
 
 
+    //데이터베이스로 연결되는 PHP 파일 URL
     private void Awake()
     {
         Debug.Log("데이터 저장 URL 설정 완료!");
@@ -29,14 +30,14 @@ public class SaveData : MonoBehaviour
     }
 
  
-   
+   //GameManager에서 게임에 필요한 값들을 저장하는 함수
    public IEnumerator __SaveData()
     {
         Debug.Log("데이터 저장 시작");
         WWWForm form = new WWWForm();
 
         form.AddField("no", GameManager.Instance.Player_No);
-        form.AddField("gold", GameManager.Instance.Gold.ToString());
+        form.AddField("gold", GameManager.Instance.Gold.ToString());                        //필요한 변수들을 POST방식으로 PHP파일로 전송
         form.AddField("itemlevel", GameManager.Instance.Player_itemlevel);
         form.AddField("friendlevel", GameManager.Instance.Player_friendlevel);
 
