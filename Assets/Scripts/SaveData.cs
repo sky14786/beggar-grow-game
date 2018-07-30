@@ -47,7 +47,7 @@ public class SaveData : MonoBehaviour
         {
             for (int i = 0; i < GameManager.Instance.Player_friendlevel; i++)
             {
-                temp += GameManager.Instance.FriendItem[i].UpgradeLevel.ToString() + "/";
+                temp += GameManager.Instance.FriendItem[i].UpgradeLevel.ToString() + "#";
             }
         }
 

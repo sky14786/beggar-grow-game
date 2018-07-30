@@ -58,7 +58,8 @@ public class LoginScripts : MonoBehaviour
                 int.TryParse(n[0]["friendlevel"].ToString(), out GameManager.Instance.Player_friendlevel);
                 double.TryParse(n[0]["gold"].ToString(), out GameManager.Instance.Gold);
                 temp_upgrade_level = n[0]["upgradelevel"].ToString().Split('#');
-                for(int i = 0; i<temp_upgrade_level.Length;i++)
+                Debug.Log(temp_upgrade_level[0]);
+                for(int i = 0; i<(temp_upgrade_level.Length-1);i++)
                 {
                     int.TryParse(temp_upgrade_level[i], out GameManager.Instance.Upgrade_Level[i]);
                 }
