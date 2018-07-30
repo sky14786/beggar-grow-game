@@ -21,12 +21,14 @@ public class UIManager : MonoBehaviour {
     public InputField Gamble_Money;
     public string Goldtext;
     public GameObject Weapon_Panel, Friend_Panel, Gamble_Panel,Attack_Panel;
+    public Button AutoTouch_Btn;
 
 
 
     private void Update()
     {
         GoldDisplay.text = "Gold : " + string.Format("{0:#,###}", GameManager.Instance.Gold);
+        _AutoTouchButtonCheck();
     }
     
     public void _AttackOn()
@@ -63,6 +65,23 @@ public class UIManager : MonoBehaviour {
         Friend_Panel.SetActive(false);
         Gamble_Panel.SetActive(false);
         //Attack_Panel.SetActive(false);
+    }
+
+    public void _AutoTouchOn()
+    {
+
+        StartCoroutine(GameManager.Instance._AutoTouch());
+        //AutoTouch_Btn.gameObject.SetActive(false);
+
+    }
+
+    public void _AutoTouchButtonCheck()
+    {
+        if(GameManager.Instance.Skills[0].IsEnabled)
+            AutoTouch_Btn.gameObject.SetActive(true);
+        else
+            AutoTouch_Btn.gameObject.SetActive(false);
+
     }
 
 

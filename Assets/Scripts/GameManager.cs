@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     // 버튼 클릭시 돈증가 시스템
     public void _Attack()
     {
-        Gold = Gold + 1 * MulGold;
+        Gold = Gold +  1 * MulGold;
     }
 
 
@@ -278,30 +278,70 @@ public class GameManager : MonoBehaviour
 
 
     // 자동 터치 스킬
-    IEnumerator _AutoTouch()
+    public IEnumerator _AutoTouch()
     {
-        if(Skills[0].IsEnabled)
+        _Skills temp = new _Skills();
+        temp.Cool_Time = Skills[0].Cool_Time;
+        temp.Power_Time = Skills[0].Power_Time;
+        //temp.IsEnabled = Skills[0].IsEnabled;
+        temp.IsEnabled = false;
+
+        Skills[0] = temp;
+        float Timer = 0.2f;
+        while (true)
         {
-            if(Skills[0].Power_Time>=0)
+            if (temp.Power_Time >= 0)
             {
-                // //ture
-                //스킬 효과,파워타임 감소
-                // 0.2 Sec -> Mulgold 
+                if (Timer >= 0)
+                {
+                    Timer -= Time.deltaTime;
+
+                }
+                else
+                {
+                    Gold = Gold + 1 * MulGold;
+                    Timer = 0.2f;
+                }
+
+                temp.Power_Time -= Time.deltaTime;
             }
             else
             {
-                //isEnabled = false;
+                temp.Power_Time = Skills[0].Power_Time;
+                temp.IsEnabled = false;
+                Skills[0] = temp;
+                StartCoroutine(_CoolTime(0));
+                yield break;
             }
-        }
-   
-        yield break;
+            yield return new WaitForEndOfFrame();
+      }
     }
+   
+   
 
 
     //스킬이 끝난후의 쿨타임 코루틴
-    IEnumerable _CoolTime()
+    public IEnumerator _CoolTime(int Sk_num)
     {
-        yield break;
+        _Skills TEMP = new _Skills();
+
+        TEMP.Cool_Time = Skills[Sk_num].Cool_Time;
+        TEMP.Power_Time = Skills[Sk_num].Power_Time;
+        while(true)
+        {
+            if(TEMP.Cool_Time>=0)
+            {
+               TEMP.Cool_Time -= Time.deltaTime;
+            }
+            else
+            {
+                TEMP.IsEnabled = true;
+                TEMP.Cool_Time = Skills[Sk_num].Cool_Time;
+                Skills[Sk_num] = TEMP;
+                yield break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
 
