@@ -45,12 +45,19 @@ public class GameManager : MonoBehaviour
         public int UpgradeLevel;
         public bool IsHaveItem;
     }
+    //----------------------------------
+    [Serializable]
+    public struct _Skills
+    {
+        public bool IsEnabled;
+        public float Cool_Time,Power_Time;
+    }
     //---------------------------------
 
 
     public List<_PassiveItem> PassiveItem = new List<_PassiveItem>();
     public List<_FriendItem> FriendItem = new List<_FriendItem>();
-
+    public List<_Skills> Skills = new List<_Skills>();
 
     // 친구 구매
     public void _FriendBuy(int FriendNum)
@@ -267,6 +274,34 @@ public class GameManager : MonoBehaviour
                 }
         }
 
+    }
+
+
+    // 자동 터치 스킬
+    IEnumerator _AutoTouch()
+    {
+        if(Skills[0].IsEnabled)
+        {
+            if(Skills[0].Power_Time>=0)
+            {
+                // //ture
+                //스킬 효과,파워타임 감소
+                // 0.2 Sec -> Mulgold 
+            }
+            else
+            {
+                //isEnabled = false;
+            }
+        }
+   
+        yield break;
+    }
+
+
+    //스킬이 끝난후의 쿨타임 코루틴
+    IEnumerable _CoolTime()
+    {
+        yield break;
     }
 }
 
