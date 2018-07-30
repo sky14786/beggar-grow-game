@@ -12,7 +12,7 @@ public class SaveData : MonoBehaviour
         {
             if(instance==null)
             {
-                instance = new SaveData();
+                instance = (SaveData)FindObjectOfType<SaveData>();
             }
             return instance;
         }
@@ -25,7 +25,7 @@ public class SaveData : MonoBehaviour
     {
         Debug.Log("데이터 저장 URL 설정 완료!");
         url = "sky14786.cafe24.com/Save_Data.php";
-        GetComponent<Button>().onClick.AddListener(() => StartCoroutine(__SaveData()));
+        //GetComponent<Button>().onClick.AddListener(() => StartCoroutine(__SaveData()));
     }
 
  
@@ -39,20 +39,29 @@ public class SaveData : MonoBehaviour
         form.AddField("gold", GameManager.Instance.Gold.ToString());
         form.AddField("itemlevel", GameManager.Instance.Player_itemlevel);
         form.AddField("friendlevel", GameManager.Instance.Player_friendlevel);
-        
-        for(int i=0;i<GameManager.Instance.Player_friendlevel;i++)
+
+        if (GameManager.Instance.Player_friendlevel == 99)
         {
-            temp += GameManager.Instance.FriendItem[i].UpgradeLevel.ToString()+"/";
+        }
+        else
+        {
+            for (int i = 0; i < GameManager.Instance.Player_friendlevel; i++)
+            {
+                temp += GameManager.Instance.FriendItem[i].UpgradeLevel.ToString() + "/";
+            }
         }
 
+        Debug.Log("Upgrade Level :" + temp);
         form.AddField("upgradelevel", temp);
 
 
-        WWW webRequest = new WWW(url, form);
+   
+        WWW WebRequest = new WWW(url, form);
 
-        yield return webRequest;
+      
+        yield return WebRequest;
 
-        Debug.Log(webRequest.error);
+        Debug.Log(WebRequest.error);
         Debug.Log("데이터 저장 성공!");
         yield break;
     }

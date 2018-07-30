@@ -697,7 +697,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: "\uC0AC\uB791\uC758 \uBAA8\uAE08\uD568 \uC5C5\uADF8\uB808\uC774\uB4DC "
 --- !u!222 &93238349
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1265,7 +1265,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: "40% \uD655\uB960\uB85C -> \uAC74 \uB3C8\uC758 1.25\uBC30 \uD68D\uB4DD"
 --- !u!222 &168796521
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1340,7 +1340,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: "\uD589\uC6B4\uC758 \uB3D9\uC804\uD568 \uC5C5\uADF8\uB808\uC774\uB4DC"
 --- !u!222 &171656840
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2884,7 +2884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11, y: -365}
+  m_AnchoredPosition: {x: 10.999998, y: -365}
   m_SizeDelta: {x: -81.79999, y: -1115.4001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &448273053
@@ -3641,7 +3641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: "\uACFC\uC77C \uBC14\uAD6C\uB2C8\uB85C \uC5C5\uADF8\uB808\uC774\uB4DC"
 --- !u!222 &515437714
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4761,7 +4761,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: '1,000\/Sec
+
+    Cost : 100,000\'
 --- !u!222 &793493893
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5320,7 +5322,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: "20% \uD655\uB960\uB85C -> \uAC74 \uB3C8\uC758 1.75\uBC30 \uD68D\uB4DD"
 --- !u!222 &916571141
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5360,8 +5362,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50.9, y: 0}
-  m_SizeDelta: {x: 619.5, y: 114.2}
+  m_AnchoredPosition: {x: -107.8, y: 0}
+  m_SizeDelta: {x: 733.2, y: 114.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918786973
 MonoBehaviour:
@@ -5395,7 +5397,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBB34\uAE30"
+  m_Text: "\uC885\uC774 \uBC15\uC2A4\uB85C \uC5C5\uADF8\uB808\uC774\uB4DC"
 --- !u!222 &918786974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6149,7 +6151,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: "10% \uD655\uB960\uB85C -> \uAC74 \uB3C8\uC758 2\uBC30 \uD68D\uB4DD"
 --- !u!222 &1047696088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6907,7 +6909,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: '10,000\/Sec
+
+    Cost : 500,000\'
 --- !u!222 &1207169066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7427,7 +7431,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: "30% \uD655\uB960\uB85C -> \uAC74 \uB3C8\uC758 1.5\uBC30 \uD68D\uB4DD"
 --- !u!222 &1293040673
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8561,10 +8565,10 @@ MonoBehaviour:
   Skills:
   - IsEnabled: 1
     Cool_Time: 10
-    Power_Time: 3
+    Power_Time: 10
   - IsEnabled: 1
     Cool_Time: 10
-    Power_Time: 3
+    Power_Time: 10
 --- !u!4 &1470656499
 Transform:
   m_ObjectHideFlags: 0
@@ -8645,7 +8649,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: '50,000\/Sec
+
+    Cost : 1,000,000\'
 --- !u!222 &1472373153
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8876,7 +8882,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: '500\/Sec
+
+    Cost : 50,000\'
 --- !u!222 &1526265527
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9026,7 +9034,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hjkhjkhjkhk
+  m_Text: "\uAE30\uD0C0 \uAC00\uBC29 \uC5C5\uADF8\uB808\uC774\uB4DC"
 --- !u!222 &1534075669
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9066,8 +9074,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50.9, y: 0}
-  m_SizeDelta: {x: 619.5, y: 114.2}
+  m_AnchoredPosition: {x: -107.8, y: 0}
+  m_SizeDelta: {x: 733.2, y: 114.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541572662
 MonoBehaviour:
@@ -9093,7 +9101,7 @@ MonoBehaviour:
     m_FontSize: 52
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 64
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -9101,7 +9109,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE5C\uAD6C"
+  m_Text: '100\/Sec
+
+    Cost : 10,000\'
 --- !u!222 &1541572663
 CanvasRenderer:
   m_ObjectHideFlags: 0

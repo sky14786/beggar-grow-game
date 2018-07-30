@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour
         Player_No = 999;
         Auto_Save_Time = 15f;
         DoubleGold = 1;
+        Player_friendlevel = 99;
     }
     // 버튼 클릭시 돈증가 시스템
     public void _Attack()
@@ -202,8 +203,9 @@ public class GameManager : MonoBehaviour
     {
         if (Auto_Save_Time <= 0)
         {
-            StartCoroutine(SaveData.Instance.__SaveData());
             Auto_Save_Time = 15f;
+            StartCoroutine(SaveData.Instance.__SaveData());
+            
         }
         else
             Auto_Save_Time -= Time.deltaTime;
@@ -252,7 +254,7 @@ public class GameManager : MonoBehaviour
                     Gold -= Gamble_Money;
                     if (Gambel.Next(0, 100) <= 20)
                     {
-                        Gold += (Gamble_Money * 2.85);
+                        Gold += (Gamble_Money * 2.75);
                     }
                     UIManager.Instance.Gamble_Money.text = "";
                     Gamble_Money = 0;
