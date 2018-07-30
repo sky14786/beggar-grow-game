@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour {
         Weapon_Panel.SetActive(false);
         Friend_Panel.SetActive(false);
         Gamble_Panel.SetActive(false);
-        Attack_Panel.SetActive(false);
+        //Attack_Panel.SetActive(false);
     }
 
 

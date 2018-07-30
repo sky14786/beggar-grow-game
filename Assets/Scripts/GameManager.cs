@@ -265,20 +265,6 @@ public class GameManager : MonoBehaviour
                     StartCoroutine(SaveData.Instance.__SaveData());
                     break;
                 }
-
-            case 5:
-                {
-                    Double.TryParse(UIManager.Instance.Gamble_Money.text, out Gamble_Money);
-                    Gold -= Gamble_Money;
-                    if (Gambel.Next(0, 100) <= 5)
-                    {
-                        Gold += (Gamble_Money * 4);
-                    }
-                    UIManager.Instance.Gamble_Money.text = "";
-                    Gamble_Money = 0;
-                    StartCoroutine(SaveData.Instance.__SaveData());
-                    break;
-                }
         }
 
     }

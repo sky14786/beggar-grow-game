@@ -9,29 +9,24 @@ public class GambleShopController : MonoBehaviour {
     {
         switch (this.name)
         {
-            case "Gamble1":
+            case "Gamble2":
                 {
                     GetComponent<Button>().onClick.AddListener(() => GameManager.Instance._Gamble(1));
                     break;
                 }
-            case "Gamble2":
+            case "Gamble3":
                 {
                     GetComponent<Button>().onClick.AddListener(() => GameManager.Instance._Gamble(2));
                     break;
                 }
-            case "Gamble3":
+            case "Gamble4":
                 {
                     GetComponent<Button>().onClick.AddListener(() => GameManager.Instance._Gamble(3));
                     break;
                 }
-            case "Gamble4":
-                {
-                    GetComponent<Button>().onClick.AddListener(() => GameManager.Instance._Gamble(4));
-                    break;
-                }
             case "Gamble5":
                 {
-                    GetComponent<Button>().onClick.AddListener(() => GameManager.Instance._Gamble(5));
+                    GetComponent<Button>().onClick.AddListener(() => GameManager.Instance._Gamble(4));
                     break;
                 }
 
