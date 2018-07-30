@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : MonoBehaviour
+{
     private static UIManager instance;
     public static UIManager Instance
     {
         get
         {
-            if(instance==null)
+            if (instance == null)
             {
                 instance = (UIManager)FindObjectOfType<UIManager>();
             }
@@ -20,8 +21,8 @@ public class UIManager : MonoBehaviour {
     public Text GoldDisplay;
     public InputField Gamble_Money;
     public string Goldtext;
-    public GameObject Weapon_Panel, Friend_Panel, Gamble_Panel,Attack_Panel;
-    public Button AutoTouch_Btn;
+    public GameObject Weapon_Panel, Friend_Panel, Gamble_Panel, Attack_Panel;
+    public Button AutoTouch_Btn, DoubleGold_Btn;
 
 
 
@@ -29,8 +30,9 @@ public class UIManager : MonoBehaviour {
     {
         GoldDisplay.text = "Gold : " + string.Format("{0:#,###}", GameManager.Instance.Gold);
         _AutoTouchButtonCheck();
+        _DoubleGoldButtonCheck();
     }
-    
+
     public void _AttackOn()
     {
         _PanelOff();
@@ -42,7 +44,7 @@ public class UIManager : MonoBehaviour {
         Debug.Log("웨폰온");
         _PanelOff();
         Weapon_Panel.SetActive(true);
-        
+
     }
 
     public void _GambleON()
@@ -69,21 +71,26 @@ public class UIManager : MonoBehaviour {
 
     public void _AutoTouchOn()
     {
-
         StartCoroutine(GameManager.Instance._AutoTouch());
-        //AutoTouch_Btn.gameObject.SetActive(false);
-
     }
 
     public void _AutoTouchButtonCheck()
     {
-        if(GameManager.Instance.Skills[0].IsEnabled)
+        if (GameManager.Instance.Skills[0].IsEnabled)
             AutoTouch_Btn.gameObject.SetActive(true);
         else
             AutoTouch_Btn.gameObject.SetActive(false);
-
     }
-
-
+    public void _DoubleGoldOn()
+    {
+        StartCoroutine(GameManager.Instance._DoubleGold());
+    }
+    public void _DoubleGoldButtonCheck()
+    {
+        if (GameManager.Instance.Skills[1].IsEnabled)
+            DoubleGold_Btn.gameObject.SetActive(true);
+        else
+            DoubleGold_Btn.gameObject.SetActive(false);
+    }
 
 }

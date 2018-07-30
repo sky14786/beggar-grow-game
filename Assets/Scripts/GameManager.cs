@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         }
     }
     //변수선언
-    public double Gold, MulGold, GoldPerSec, Gamble_Money;
+    public double Gold, MulGold, GoldPerSec, Gamble_Money,DoubleGold;
     public int i, Player_No, Player_itemlevel, Player_friendlevel;
     public int[] Upgrade_Level;
     public float onesec, Auto_Save_Time;
@@ -132,11 +132,12 @@ public class GameManager : MonoBehaviour
         Upgrade_Level = new int[4];
         Player_No = 999;
         Auto_Save_Time = 15f;
+        DoubleGold = 1;
     }
     // 버튼 클릭시 돈증가 시스템
     public void _Attack()
     {
-        Gold = Gold +  1 * MulGold;
+        Gold = Gold +  1 * MulGold * DoubleGold;
     }
 
 
@@ -275,8 +276,8 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-
+  
+    
     // 자동 터치 스킬
     public IEnumerator _AutoTouch()
     {
@@ -299,7 +300,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Gold = Gold + 1 * MulGold;
+                    Gold = Gold + 1 * MulGold * DoubleGold;
                     Timer = 0.2f;
                 }
 
@@ -316,7 +317,34 @@ public class GameManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
       }
     }
-   
+    // 일정시간 동안 획득 골드량 2배
+   public IEnumerator _DoubleGold()
+    {
+        _Skills temp = new _Skills();
+        temp.Cool_Time = Skills[1].Cool_Time;
+        temp.Power_Time = Skills[1].Power_Time;
+        temp.IsEnabled = false;
+
+        Skills[1] = temp;
+
+        DoubleGold = 2;
+        while (true)
+        {
+
+            if (temp.Power_Time >= 0)
+            {
+                temp.Power_Time -= Time.deltaTime;
+            }
+            else
+            {
+                DoubleGold = 1;
+                temp.Power_Time = Skills[1].Power_Time;
+                StartCoroutine(_CoolTime(1));
+                yield break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+    }
    
 
 
